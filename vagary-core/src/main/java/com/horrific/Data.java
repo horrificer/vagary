@@ -23,7 +23,9 @@ public class Data {
     /**
      * 过滤条件
      */
-    private String where;
+    private String whereOn;
+
+    private String whereOr;
 
     /**
      * 聚合字段
@@ -43,7 +45,7 @@ public class Data {
     /**
      * 长度
      */
-    private Integer limit;
+    private Integer size;
 
     /**
      * 偏移

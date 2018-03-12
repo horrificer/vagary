@@ -59,6 +59,11 @@ public class GroupBy implements TerminalExpression {
 		return new OrderBy(context, columns);
 	}
 
+	public Limit limit(int start, int size) {
+		terminate();
+		return new Limit(context, start, size);
+	}
+
 	public OrderBy orderBy(OrderByType order, String... columns) {
 		terminate();
 		return new OrderBy(context, order, columns);

@@ -83,11 +83,13 @@ public class From implements TerminalExpression {
 		return new Limit(context, start, size);
 	}
 
+	@Override
 	public <E> List<E> list(RowMapper<E> rowMapper) throws SQLException {
 		terminate();
 		return context.list(rowMapper);
 	}
 
+	@Override
 	public <E> E single(RowMapper<E> rowMapper) throws SQLException {
 		terminate();
 		return context.single(rowMapper);

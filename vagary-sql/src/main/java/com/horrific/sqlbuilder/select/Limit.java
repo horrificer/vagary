@@ -37,17 +37,22 @@ public class Limit implements TerminalExpression {
 }
 
 interface Limiter {
-	Context limit(Context context, int start, int size);
+	Context limit(Context context, Integer start, Integer size);
 }
 
 class HSQLDBLimiter implements Limiter {
 
 	@Override
-	public Context limit(Context context, int start, int size) {
-		context.appendLine("LIMIT ?");
-		context.addParameters(size);
-		context.appendLine("OFFSET ?");
-		context.addParameters(start);
+	public Context limit(Context context, Integer start, Integer size) {
+		if (size != null) {
+			context.appendLine("LIMIT " + size);
+			context.addParameters(size);
+		}
+		if (start != null) {
+			context.appendLine("OFFSET " + start);
+			context.addParameters(start);
+		}
+
 		return context;
 	}
 
@@ -56,7 +61,7 @@ class HSQLDBLimiter implements Limiter {
 class OracleLimiter implements Limiter {
 
 	@Override
-	public Context limit(Context context, int start, int size) {
+	public Context limit(Context context, Integer start, Integer size) {
 		Context c = new Context(context);
 		c.appendLine("SELECT");
 		c.appendLine("data.*");
@@ -83,20 +88,21 @@ class OracleLimiter implements Limiter {
 
 class DefaultLimiter implements Limiter {
 	@Override
-	public Context limit(Context context, int start, int size) {
+	public Context limit(Context context, Integer start, Integer size) {
 		return context;
 	}
 }
 
 class LimiterFactory {
 	Limiter create(Database database) {
-		switch (database) {
+		/*switch (database) {
 			case HSQLDB:
 				return new HSQLDBLimiter();
 			case ORACLE:
 				return new OracleLimiter();
 			default:
 				return new DefaultLimiter();
-		}
+		}*/
+		return new HSQLDBLimiter();
 	}
 }

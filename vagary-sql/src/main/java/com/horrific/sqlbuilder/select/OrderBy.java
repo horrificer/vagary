@@ -89,7 +89,7 @@ public class OrderBy implements TerminalExpression {
 		if (!terminated) {
 			context.appendLine(" ");
 			context.appendLine(StringUtils.join(columns, ", "));
-			context.appendLine(" " + order.name());
+			//context.appendLine(" " + order.name());
 		}
 	}
 }

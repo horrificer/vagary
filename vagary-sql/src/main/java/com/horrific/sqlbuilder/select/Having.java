@@ -54,6 +54,11 @@ public class Having implements TerminalExpression {
 		return new OrderBy(context, order, column);
 	}
 
+	public Limit limit(int start, int size) {
+		terminate();
+		return new Limit(context, start, size);
+	}
+
 	@Override
 	public <E> List<E> list(RowMapper<E> rowMapper) throws SQLException {
 		terminate();
