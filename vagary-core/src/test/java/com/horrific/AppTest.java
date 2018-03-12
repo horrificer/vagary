@@ -1,38 +1,30 @@
 package com.horrific;
 
-import junit.framework.Test;
+import com.horrific.sqlbuilder.builder.QueryBuilder;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Test;
+
+import java.util.Map;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+public class AppTest extends TestCase {
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void testSql() {
+        String sql = new QueryBuilder()
+                .select()
+                .all()
+                .from()
+                .table("test_table")
+                .where()
+                .and("a=1")
+                .groupBy()
+                .column("a")
+                .having()
+                .condition("sum(a)>0")
+                .toString();
+        System.out.println(sql);
     }
 }

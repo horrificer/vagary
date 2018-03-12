@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>vagary-core</artifactId>
+    <artifactId>vagary-sql</artifactId>
     <packaging>jar</packaging>
 
-    <name>vagary-core</name>
+    <name>vagary-sql</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -19,16 +19,16 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.horrific</groupId>
-            <artifactId>vagary-sql</artifactId>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
         </dependency>
     </dependencies>
 </project>
