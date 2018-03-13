@@ -2,6 +2,9 @@ package com.horrific.chartconvert;
 
 import com.horrific.Param;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * ChartConvert List<Map<String, Object>> to VO
  *
@@ -18,7 +21,7 @@ public interface ChartConvert<T> {
      * @param params query information
      * @return VO needed by web application
      */
-    T handle(Object data, Param params);
+    T handle(List<Map<String, Object>> data, Param params);
 
 
     /**
@@ -27,5 +30,5 @@ public interface ChartConvert<T> {
      * @param chartType chart type
      * @return true or false
      */
-    boolean beanIndicate(int chartType);
+    boolean beanIndicate(Integer chartType);
 }
