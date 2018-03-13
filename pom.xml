@@ -9,7 +9,8 @@
 
 		<module>vagary-core</module>
 		<module>vagary-sql</module>
-	</modules>
+        <module>vagary-base</module>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>vagary</name>
@@ -42,6 +43,7 @@
 		<jackson-mapper-asl.version>1.8.1</jackson-mapper-asl.version>
 		<jackson-databind.version>2.7.9.1</jackson-databind.version>
 		<jackson-dataformat-xml.version>2.7.4</jackson-dataformat-xml.version>
+		<jackson.version>2.7.4</jackson.version>
 		<joda-time.version>2.8.1</joda-time.version>
 		<ezmorph.version>1.0.6</ezmorph.version>
 		<slf4j-api.version>1.7.12</slf4j-api.version>
@@ -71,6 +73,12 @@
 			<dependency>
 				<groupId>com.horrific</groupId>
 				<artifactId>vagary-sql</artifactId>
+				<version>${vagary-sql.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.horrific</groupId>
+				<artifactId>vagary-base</artifactId>
 				<version>${vagary-sql.version}</version>
 			</dependency>
 
@@ -213,6 +221,12 @@
 				<version>${org.json.version}</version>
 			</dependency>
 			<!-- json解析 -->
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-annotations</artifactId>

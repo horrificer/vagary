@@ -4,6 +4,10 @@ package com.horrific.common.utils;
 import java.sql.Time;
 import java.sql.Timestamp;
 
+/**
+ * @author wanghong12
+ * @since 2018-3-13
+ */
 public final class DateUtil {
 
     /**
