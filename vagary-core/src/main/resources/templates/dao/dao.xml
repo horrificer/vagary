@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+	<name>dao</name>
+	<filePath>src/main/java/${packageName}/${moduleName}/dao/${subModuleName}</filePath>
+	<fileName>${ClassName}Dao.java</fileName>
+	<content><![CDATA[
+package ${packageName}.${moduleName}.dao<#if subModuleName != "">.${subModuleName}</#if>;
+
+import common.persistence.CrudDao;
+import common.persistence.annotation.MyBatisDao;
+import ${packageName}.${moduleName}.entity<#if subModuleName != "">.${subModuleName}</#if>.${ClassName};
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+/**
+ * ${functionName}DAO接口
+ * @author ${functionAuthor}
+ * @version ${functionVersion}
+ */
+@MyBatisDao
+public interface ${ClassName}Dao extends CrudDao<${ClassName}> {
+
+	/**
+	 * 批量插入
+	 * @param ${className}List
+	 * @return
+	 */
+	int batchInsert(@Param("${className}List") List<${ClassName}> ${className}List);
+
+	/**
+	 * 批量删除
+	 * @param ids
+	 * @return
+	 */
+	int batchDelete(@Param("ids") List<String> ids);
+	
+}]]>
+    </content>
+</template>

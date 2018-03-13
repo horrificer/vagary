@@ -13,7 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Data {
+public class Param {
 
     /**
      * 需要查询的字段
@@ -56,4 +56,8 @@ public class Data {
      * 图表类型
      */
     private Integer chartType;
+
+    private String table;
+
+    private String joinTable;
 }

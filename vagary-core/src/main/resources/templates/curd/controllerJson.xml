@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+	<name>controller</name>
+	<filePath>src/main/java/${packageName}/${moduleName}/web/${subModuleName}</filePath>
+	<fileName>${ClassName}Controller.java</fileName>
+	<content><![CDATA[
+
+package ${packageName}.${moduleName}.web<#if subModuleName != "">.${subModuleName}</#if>;
+
+import common.persistence.Page;
+import common.response.base.ServiceResponse;
+import common.utils.StringUtils;
+import com.jd.business.common.web.BaseController;
+import ${packageName}.${moduleName}.entity<#if subModuleName != "">.${subModuleName}</#if>.${ClassName};
+import ${packageName}.${moduleName}.service<#if subModuleName != "">.${subModuleName}</#if>.${ClassName}Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+
+/**
+ * ${functionName}Controller
+ * @author ${functionAuthor}
+ * @version ${functionVersion}
+ */
+@RestController
+@RequestMapping(value = "${r"${frontPath}"}/${urlPrefix}")
+public class ${ClassName}Controller extends BaseController {
+
+	@Autowired
+	private ${ClassName}Service ${className}Service;
+	
+	@RequestMapping(path = "listPage", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+	public ServiceResponse<Page> listPage(${ClassName} ${className}, HttpServletRequest request, HttpServletResponse response) {
+		Page<${ClassName}> page = ${className}Service.findPage(new Page<${ClassName}>(request, response), ${className});
+		return ServiceResponse.ok(page);
+	}
+
+	@RequestMapping(path = "list", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+    public ServiceResponse list(${ClassName} ${className}) {
+        List<${ClassName}> ${className}s = sysLogService.findList(${className});
+        return ServiceResponse.ok(${className}s);
+    }
+
+	@RequestMapping(path = "info", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+    public ServiceResponse selectInfoById(String id) {
+        ${ClassName} entity = null;
+		if (StringUtils.isNotBlank(id)){
+			entity = ${className}Service.get(id);
+		}
+		if (entity == null){
+			entity = new ${ClassName}();
+		}
+        return ServiceResponse.ok(entity);
+    }
+
+    @RequestMapping(path = "info", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+    public ServiceResponse save(${ClassName} ${className}) {
+        ${className}Service.save(${className});
+        return ServiceResponse.ok("save success");
+    }
+
+    @RequestMapping(path = "batchInfo", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+    public ServiceResponse batchInsert(List<${ClassName}> ${className}List) {
+	    ${className}Service.batchInsert(${className}List);
+	    return ServiceResponse.ok("batchInsert success");
+    }
+
+    @RequestMapping(value = "info", method = DELETE, produces = APPLICATION_JSON_UTF8_VALUE)
+    public ServiceResponse delete(${ClassName} ${className}) {
+        ${className}Service.delete(${className});
+        return ServiceResponse.ok("delete success");
+    }
+
+    @RequestMapping(value = "batchInfo", method = DELETE, produces = APPLICATION_JSON_UTF8_VALUE)
+    public ServiceResponse batchDelete(String ids) {
+	    if (ids == null) {
+	        throw new IllegalArgumentException();
+        }
+        String[] idsArray = ids.split(",");
+        ${className}Service.batchDelete(Arrays.stream(idsArray).collect(Collectors.toList()));
+        return ServiceResponse.ok("batchDelete success");
+    }
+
+}]]>
+	</content>
+</template>

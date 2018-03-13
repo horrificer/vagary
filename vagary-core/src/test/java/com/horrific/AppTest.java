@@ -1,6 +1,7 @@
 package com.horrific;
 
 import com.alibaba.fastjson.JSONObject;
+import com.horrific.buildsql.MysqlBuilder;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -23,7 +24,7 @@ public class AppTest extends TestCase {
                 //"\t\"offset\":2,\n" +
                 "\t\"chartType\":1\n" +
                 "}";
-        Data data = JSONObject.parseObject(json, Data.class);
-        System.out.println(new MysqlBuilder().buildSql(data, "test_table", null));
+        Param param = JSONObject.parseObject(json, Param.class);
+        System.out.println(new MysqlBuilder().buildSql(param));
     }
 }
