@@ -1,4 +1,4 @@
-package com.horrific.common.dto.chart;
+package com.horrific.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -8,26 +8,16 @@ import lombok.ToString;
 import java.io.Serializable;
 
 /**
- * @Description:
- * @author duanmenghua
- * @date 2017年8月7日 下午5:39:35
+ * Created by duanzhiying on 2017/10/15.
+ * 图表转换VO的基本属性
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Field implements Serializable{
+public class ChartVO implements Serializable {
     /**
-     * 字段名称
+     * 图表类型，见:{@link: com.jd.jdp.common.enums.DrawEnum}
      */
-    private String field;
-
-    /**
-     * 字段显示名称/别名
-     */
-    private String caption;
-
-
-
-
+    private Integer chartType;
 }
