@@ -4,6 +4,7 @@ package com.horrific.sqlbuilder.select;
 import com.horrific.sqlbuilder.Context;
 import com.horrific.sqlbuilder.Database;
 import com.horrific.sqlbuilder.TerminalExpression;
+import org.omg.PortableInterceptor.INACTIVE;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -12,7 +13,7 @@ public class Limit implements TerminalExpression {
 
 	private final Context context;
 
-	public Limit(Context context, int start, int size) {
+	public Limit(Context context, Integer start, Integer size) {
 		this.context = limit(context, start, size);
 	}
 
@@ -26,7 +27,7 @@ public class Limit implements TerminalExpression {
 		return context.single(rowMapper);
 	}
 
-	private Context limit(Context context, int start, int size) {
+	private Context limit(Context context, Integer start, Integer size) {
 		return new LimiterFactory().create(context.getDatabase()).limit(context, start, size);
 	}
 

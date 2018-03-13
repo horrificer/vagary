@@ -59,7 +59,7 @@ public class GroupBy implements TerminalExpression {
 		return new OrderBy(context, columns);
 	}
 
-	public Limit limit(int start, int size) {
+	public Limit limit(Integer start, Integer size) {
 		terminate();
 		return new Limit(context, start, size);
 	}

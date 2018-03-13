@@ -62,7 +62,7 @@ public class OrderBy implements TerminalExpression {
 		return this;
 	}
 
-	public Limit limit(int start, int size) {
+	public Limit limit(Integer start, Integer size) {
 		terminate();
 		return new Limit(context, start, size);
 	}
