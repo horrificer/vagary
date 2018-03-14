@@ -17,7 +17,7 @@ public class AppTest extends TestCase {
                 "\t\"columns\":\"sum(a), b, c\",\t\n" +
                 "\t\"whereOn\":\"b=1,c=2\",\n" +
                 "\t\"whereOr\":\"b=2,c=3\",\n" +
-                //"\t\"groupBy\":\"a\",\n" +
+                "\t\"groupBy\":\"d\",\n" +
                 //"\t\"orderBy\":\"b asc,c desc\",\n" +
                 //"\t\"having\":\"a>100\",\n" +
                 //"\t\"size\":1,\n" +

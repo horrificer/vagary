@@ -24,6 +24,11 @@ public abstract class AbstractSqlBuilder {
             String[] clumns = param.getColumns().split(COMMA);
             Arrays.stream(clumns).forEach(s -> select.column(s));
         }
+
+        if (StringUtils.isNotEmpty(param.getGroupBy())) {
+            String[] dims = param.getGroupBy().split(COMMA);
+            Arrays.stream(dims).forEach(s -> select.column(s));
+        }
         return select;
     }
 

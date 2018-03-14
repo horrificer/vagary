@@ -25,8 +25,6 @@ public class DefaultChartVO<E,T> extends ChartVO{
      */
     private List<T> measure;
 
-    private Map linkage;
-
     /**
      * 构造函数
      * @param chartType 图表类型
@@ -39,10 +37,4 @@ public class DefaultChartVO<E,T> extends ChartVO{
         this.measure = measure;
     }
 
-    public DefaultChartVO(Integer chartType, List<E> dimension, List<T> measure, Map linkage){
-        super(chartType);
-        this.dimension = dimension;
-        this.measure = measure;
-        this.linkage = linkage;
-    }
 }

@@ -2,7 +2,6 @@ package com.horrific.chartconvert;
 
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.horrific.Param;
 import com.horrific.common.dto.ChartInfo;
 import com.horrific.common.dto.Field;
@@ -59,9 +58,9 @@ public abstract class AbstractChartConvert<T> implements ChartConvert<T> {
         Integer chartType = params.getChartType();
 
         //获取维度
-        List<Field> dims = toField(params.getColumns());
+        List<Field> dims = toField(params.getGroupBy());
         //获取度量
-        List<Field> measures = toField(params.getGroupBy());
+        List<Field> measures = toField(params.getColumns());
         //获取第一个维度caption
         String dim = dims.size() == 0 ? DEFAULT_DIMENSION : dims.get(0).getCaption();
         //获取第一个度量caption
@@ -71,6 +70,7 @@ public abstract class AbstractChartConvert<T> implements ChartConvert<T> {
 
     /**
      * 将参数转化为维度和指标
+     *
      * @param str
      * @return
      */
@@ -94,28 +94,4 @@ public abstract class AbstractChartConvert<T> implements ChartConvert<T> {
         return fields;
     }
 
-    /**
-     * 构建联动映射：key是翻译后的name，value是翻译前的id（即联动其他图表的字段值）
-     * @param chartInfo
-     * @return
-     */
-    protected Map buildLinkageMap(ChartInfo chartInfo){
-        Map linkage = Maps.newLinkedHashMap();
-        if(DEFAULT_DIMENSION.equals(chartInfo.getDim())) {
-            return linkage;
-        }
-
-        List<Map<String,Object>> data = chartInfo.getDataList();
-        if(data == null){
-            return linkage;
-        }
-
-        data.forEach(map -> {
-            //为空时的默认值需要统一，TODO
-            Object value = map.get(chartInfo.getDim()) == null? "": map.get(chartInfo.getDim());
-            Object key = map.get(FIRST_DIM_ORIGIN_VALUE) == null ? value : map.get(FIRST_DIM_ORIGIN_VALUE);
-            linkage.put(value,key);
-        });
-        return linkage;
-    }
 }

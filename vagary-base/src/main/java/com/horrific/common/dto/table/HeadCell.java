@@ -13,10 +13,6 @@ import java.io.Serializable;
 @ToString
 public class HeadCell implements Serializable{
 
-    /**
-     * 提示信息
-     */
-    private String tip;
 
     /**
      * 隱藏
@@ -32,16 +28,6 @@ public class HeadCell implements Serializable{
      * 英文名
      */
     private String key;
-
-    /**
-     * 格式
-     */
-    private String pattern;
-
-    /**
-     * 下载
-     */
-    private String download;
 
     public HeadCell(String title, String key) {
         this.title = title;

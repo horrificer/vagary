@@ -33,7 +33,6 @@ public class TendencyChartConvert extends AbstractChartConvert<DefaultChartVO<St
             return new DefaultChartVO(chartInfo.getChartType(), dimension, measure);
         }
 
-        Map linkage = buildLinkageMap(chartInfo);
         chartInfo.getDataList().forEach(map -> {
             String dimensionValue = map.get(chartInfo.getDim()) == null ? null : DateUtil.toValue(map.get(chartInfo.getDim())).toString();
             dimension.add(dimensionValue);
@@ -50,7 +49,7 @@ public class TendencyChartConvert extends AbstractChartConvert<DefaultChartVO<St
         });
 
         pointMap.forEach((key, value) -> measure.add(new ListChartDTO(key, value)));
-        return new DefaultChartVO(chartInfo.getChartType(), dimension, measure, linkage);
+        return new DefaultChartVO(chartInfo.getChartType(), dimension, measure);
     }
 
     @Override
