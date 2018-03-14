@@ -89,7 +89,7 @@ public class Where extends Condition implements TerminalExpression {
 		return this;
 	}
 
-	public Limit limit(int start, int size) {
+	public Limit limit(Integer start, Integer size) {
 		return new Limit(context, start, size);
 	}
 

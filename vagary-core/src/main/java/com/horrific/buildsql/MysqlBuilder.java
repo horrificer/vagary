@@ -3,11 +3,13 @@ package com.horrific.buildsql;
 import com.horrific.Param;
 import com.horrific.sqlbuilder.select.*;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
 
 /**
  * @author wanghong12
  * @version 2018-3-12
  */
+@Component
 public class MysqlBuilder extends AbstractSqlBuilder {
 
     public String buildSql(Param param) {
