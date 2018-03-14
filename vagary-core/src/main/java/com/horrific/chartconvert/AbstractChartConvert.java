@@ -6,6 +6,7 @@ import com.google.common.collect.Maps;
 import com.horrific.Param;
 import com.horrific.common.dto.ChartInfo;
 import com.horrific.common.dto.Field;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -75,6 +76,9 @@ public abstract class AbstractChartConvert<T> implements ChartConvert<T> {
      */
     private static List<Field> toField(String str) {
         List<Field> fields = Lists.newArrayList();
+        if (StringUtils.isEmpty(str)) {
+            return fields;
+        }
         String[] split = str.split(",");
         String[][] array = new String[split.length][];
         for (int i = 0; i < split.length; i++) {
