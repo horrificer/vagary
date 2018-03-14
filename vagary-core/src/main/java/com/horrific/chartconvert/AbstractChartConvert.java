@@ -82,7 +82,7 @@ public abstract class AbstractChartConvert<T> implements ChartConvert<T> {
         String[] split = str.split(",");
         String[][] array = new String[split.length][];
         for (int i = 0; i < split.length; i++) {
-            array[i] = split[i].split("\\s+");
+            array[i] = split[i].trim().split("\\s+");
             if (array[i].length == 1) {
                 fields.add(new Field(array[i][0], array[i][0]));
             } else {
