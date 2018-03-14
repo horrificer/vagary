@@ -1,7 +1,10 @@
 package com.horrific.buildsql;
 
 import com.horrific.Param;
-import com.horrific.sqlbuilder.select.*;
+import com.horrific.sqlbuilder.select.From;
+import com.horrific.sqlbuilder.select.GroupBy;
+import com.horrific.sqlbuilder.select.Having;
+import com.horrific.sqlbuilder.select.Join;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
