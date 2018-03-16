@@ -55,7 +55,7 @@ public class Param {
     /**
      * 图表类型
      */
-    private Integer chartType;
+    private Integer chartType = -1;
 
     private String table;
 

@@ -21,7 +21,7 @@ public enum CharTypeEnum {
     GAUGE(80, "计量图"),
     INDEX_CARD(81, "指标卡"),
     MAP(90,"地图"),
-    DEFAULT(0, "默认");
+    DEFAULT(-1, "默认");
 
     public int code;
     public String desc;
