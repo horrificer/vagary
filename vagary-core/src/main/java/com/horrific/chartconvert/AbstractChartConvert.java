@@ -18,7 +18,7 @@ import java.util.Map;
 
 public abstract class AbstractChartConvert<T> implements ChartConvert<T> {
 
-    public static final String DEFAULT_DIMENSION = "维度";
+    public static final String DEFAULT_DIMENSION = "bs";
     public static final String DEFAULT_MEASURE = "度量";
     public static final String FIRST_DIM_ORIGIN_VALUE = "firstDimOriginValue";
 
