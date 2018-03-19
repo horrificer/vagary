@@ -17,11 +17,12 @@ public class MysqlBuilder extends AbstractSqlBuilder {
 
     public String buildSql(Param param) {
 
+        String table = param.getTable();
         if (param.getPage()) {
-            param.setTable(param.getTable() + COMMA + String.format(WHERE_NUM, param.getSize() * param.getOffset()));
+            table = param.getTable() + COMMA + String.format(WHERE_NUM, param.getSize() * param.getOffset());
         }
 
-        From from = select(param).from().table(param.getTable());
+        From from = select(param).from().table(table);
 
         Join join = null;
         if (StringUtils.isNotEmpty(param.getJoinTable())) {
