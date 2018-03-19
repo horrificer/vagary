@@ -14,9 +14,19 @@ public abstract class AbstractSqlBuilder {
 
     public static final String COMMA = ",";
 
+    public static final String OIL = "#";
+
+    public static final String SELECT_NUM = "@rownum:=@rownum+1 as num";
+
+    public static final String WHERE_NUM = "(select @rownum:=%s) t";
+
     public Select select(Param param) {
         QueryBuilder builder = new QueryBuilder();
         Select select = builder.select();
+
+        if (param.getPage()) {
+            select.column(SELECT_NUM);
+        }
 
         if (StringUtils.isEmpty(param.getColumns())) {
             select.all();
@@ -42,11 +52,19 @@ public abstract class AbstractSqlBuilder {
 
         if (StringUtils.isNotEmpty(param.getWhereOn())) {
             String[] wheres = param.getWhereOn().split(COMMA);
-            Arrays.stream(wheres).forEach(w -> where[0].and(w));
+            Arrays.stream(wheres).forEach(w -> {
+                if (!w.contains(OIL)) {
+                    where[0].and(w);
+                }
+            });
         }
         if (StringUtils.isNotEmpty(param.getWhereOr())) {
             String[] wheres = param.getWhereOr().split(COMMA);
-            Arrays.stream(wheres).forEach(w -> where[0].or(w));
+            Arrays.stream(wheres).forEach(w -> {
+                if (!w.contains(OIL)) {
+                    where[0].or(w);
+                }
+            });
         }
         return where[0];
     }

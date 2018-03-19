@@ -18,6 +18,8 @@ import java.util.Map;
 @Slf4j
 public abstract class AbstractQuery {
 
+    public static final String COUNT = "count(*) num";
+
     @Autowired
     private MysqlBuilder builder;
 
@@ -37,6 +39,15 @@ public abstract class AbstractQuery {
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(dataSource);
 
         return template.queryForList(sql, new HashMap<>());
+    }
+
+    public void countQuery(Param param) {
+        param.setPage(false);
+        param.setColumns(COUNT);
+        param.setOrderBy(null);
+        param.setSize(null);
+        param.setOffset(null);
+        param.setTotal(String.valueOf(doQuery(param).get(0).get("num")));
     }
 
     abstract void validate(String sql);

@@ -17,6 +17,10 @@ public class MysqlBuilder extends AbstractSqlBuilder {
 
     public String buildSql(Param param) {
 
+        if (param.getPage()) {
+            param.setTable(param.getTable() + COMMA + String.format(WHERE_NUM, param.getSize() * param.getOffset()));
+        }
+
         From from = select(param).from().table(param.getTable());
 
         Join join = null;

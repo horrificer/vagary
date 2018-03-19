@@ -60,4 +60,8 @@ public class Param {
     private String table;
 
     private String joinTable;
+
+    private String total;
+
+    private Boolean page = false;
 }

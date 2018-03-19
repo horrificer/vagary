@@ -30,4 +30,6 @@ public class ChartInfo implements Serializable {
     private String dim;
 
     private String measure;
+
+    private String total;
 }

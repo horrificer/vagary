@@ -25,6 +25,11 @@ public class MySqlQuery extends AbstractQuery {
 
         List<Map<String, Object>> data = doQuery(param);
 
+        Map<String, Object> count = null;
+        if (param.getPage()) {
+            countQuery(param);
+        }
+
         ChartConvert<T> convert = convertFactory.getInstance(param);
 
         return convert.handle(data, param);
