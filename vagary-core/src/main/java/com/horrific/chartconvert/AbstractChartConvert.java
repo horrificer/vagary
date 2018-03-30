@@ -19,8 +19,8 @@ import java.util.Map;
 public abstract class AbstractChartConvert<T> implements ChartConvert<T> {
 
     public static final String DEFAULT_DIMENSION = "bs";
-    public static final String DEFAULT_MEASURE = "度量";
-    public static final String FIRST_DIM_ORIGIN_VALUE = "firstDimOriginValue";
+    public static final String DEFAULT_MEASURE = "gmv";
+    public static final String DEFAULT_DIVIDE_VALUE = "#ALL";
 
     /**
      * @param data   query information
@@ -57,6 +57,8 @@ public abstract class AbstractChartConvert<T> implements ChartConvert<T> {
         //获取图表类型
         Integer chartType = params.getChartType();
 
+        String divide = getDivideValue(params);
+
         //获取维度
         List<Field> dims = toField(params.getGroupBy());
         //获取度量
@@ -65,7 +67,7 @@ public abstract class AbstractChartConvert<T> implements ChartConvert<T> {
         String dim = dims.size() == 0 ? DEFAULT_DIMENSION : dims.get(0).getCaption();
         //获取第一个度量caption
         String measure = measures.size() == 0 ? DEFAULT_MEASURE : measures.get(0).getCaption();
-        return new ChartInfo(chartType, data, dims, measures, dim, measure);
+        return new ChartInfo(chartType, data, dims, measures, dim, measure, params.getTotal(), divide);
     }
 
     /**
@@ -92,6 +94,20 @@ public abstract class AbstractChartConvert<T> implements ChartConvert<T> {
         }
 
         return fields;
+    }
+
+    public static String getDivideValue(Param params) {
+        String divide = params.getDivide() == null ? DEFAULT_DIMENSION : params.getDivide();
+        if (StringUtils.isEmpty(params.getWhereOn())) {
+            return DEFAULT_DIVIDE_VALUE;
+        }
+        String[] split = params.getWhereOn().split(",");
+        for(String e : split) {
+            if (e.contains(divide.trim())) {
+                return e.substring(e.indexOf("\'") + 1, e.length() - 1);
+            }
+        }
+        return DEFAULT_DIVIDE_VALUE;
     }
 
 }

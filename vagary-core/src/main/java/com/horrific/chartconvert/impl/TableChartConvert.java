@@ -31,7 +31,7 @@ public class TableChartConvert extends AbstractChartConvert<TableViewVO> {
 
         List<HeadCell> headCellList = Lists.newArrayList();
 
-        dimAndMeas.forEach(each -> headCellList.add(new HeadCell(each.getCaption(), each.getField())));
+        dimAndMeas.forEach(each -> headCellList.add(new HeadCell(each.getCaption(), each.getCaption())));
 
         TableViewVO tableViewVO = new TableViewVO(chartInfo.getChartType(), headCellList, list);
 

@@ -20,6 +20,10 @@ public abstract class AbstractSqlBuilder {
 
     public static final String WHERE_NUM = "(select @rownum:=%s) t";
 
+    public static final String SUBTRING = "SUBSTRING_INDEX(data_value, '_', 1) %sId, SUBSTRING_INDEX(data_value, '_', -1) %sValue";
+
+    public static final String SPECIAL_VALUE = "data_value";
+
     public Select select(Param param) {
         QueryBuilder builder = new QueryBuilder();
         Select select = builder.select();
@@ -32,7 +36,13 @@ public abstract class AbstractSqlBuilder {
             select.all();
         } else {
             String[] clumns = param.getColumns().split(COMMA);
-            Arrays.stream(clumns).forEach(s -> select.column(s));
+            Arrays.stream(clumns).forEach(s -> {
+                if (s.contains(SPECIAL_VALUE)) {
+                    String replace = getAlise(s);
+                    select.column(String.format(SUBTRING, replace, replace));
+                }
+                select.column(s);
+            });
         }
 
         if (StringUtils.isNotEmpty(param.getGroupBy())) {
@@ -85,6 +95,15 @@ public abstract class AbstractSqlBuilder {
             return having;
         }
         return null;
+    }
+
+    public String getAlise(String column) {
+        String[] alises = column.split("\\s+");
+        if (alises.length == 1) {
+            return alises[0];
+        } else {
+            return alises[1];
+        }
     }
 
 }

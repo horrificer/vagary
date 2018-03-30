@@ -24,4 +24,8 @@ public class QueryService {
         }
         return ServiceResponse.ok(data);
     }
+
+    public void update(String sql) {
+        query.doUpdate(sql);
+    }
 }

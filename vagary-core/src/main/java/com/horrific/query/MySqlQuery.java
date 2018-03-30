@@ -4,6 +4,7 @@ package com.horrific.query;
 import com.horrific.Param;
 import com.horrific.chartconvert.ChartConvert;
 import com.horrific.chartconvert.ChartConvertFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ import java.util.Map;
  * @author wanghong12
  * @since 2017-3-13
  */
+@Slf4j
 @Component
 public class MySqlQuery extends AbstractQuery {
 

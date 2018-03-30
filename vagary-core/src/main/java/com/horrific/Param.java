@@ -64,4 +64,8 @@ public class Param {
     private String total;
 
     private Boolean page = false;
+
+    private String title = "明细表";
+
+    private String divide;
 }

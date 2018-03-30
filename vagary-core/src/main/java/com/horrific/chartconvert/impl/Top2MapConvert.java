@@ -5,7 +5,6 @@ import com.google.common.collect.Maps;
 import com.horrific.chartconvert.AbstractChartConvert;
 import com.horrific.common.dto.ChartInfo;
 import com.horrific.common.enums.CharTypeEnum;
-import com.horrific.common.utils.DateUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
@@ -29,14 +28,8 @@ public class Top2MapConvert extends AbstractChartConvert<Map<String, List>> {
             listMap.put("total", Lists.newArrayList(chartInfo.getTotal()));
         }
 
-        chartInfo.getDataList().forEach(map -> {
-            String dimensionValue = map.get(chartInfo.getDim()) == null ? null : DateUtil.toValue(map.get(chartInfo.getDim())).toString();
-            if (listMap.get(dimensionValue) != null) {
-                listMap.get(dimensionValue).add(map);
-            } else {
-                listMap.put(dimensionValue, Lists.newArrayList(map));
-            }
-        });
+        String dimensionValue = chartInfo.getDivide();
+        listMap.put(dimensionValue, chartInfo.getDataList());
         return listMap;
     }
 
