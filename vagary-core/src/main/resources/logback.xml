@@ -29,13 +29,7 @@
 		</triggeringPolicy>
 	</appender>
 
-	<logger name="java.sql.Connection" level="DEBUG" />
-	<logger name="java.sql.Statement" level="DEBUG" />
-	<logger name="java.sql.PreparedStatement" level="DEBUG" />
-
-	<logger name="org.springframework" level="DEBUG" />
-
-	<root level="debug">
+	<root level="DEBUG">
 		<appender-ref ref="stdout" />
 		<appender-ref ref="logfile" />
 	</root>

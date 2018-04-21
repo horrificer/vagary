@@ -87,12 +87,12 @@ public class Context {
 
 	public Context appendLine(String expression) {
 		sql.append(expression);
-		sql.append(NEW_LINE);
+		//sql.append(NEW_LINE);
 		return this;
 	}
 
 	public Context newLine() {
-		sql.append(NEW_LINE);
+		//sql.append(NEW_LINE);
 		return this;
 	}
 

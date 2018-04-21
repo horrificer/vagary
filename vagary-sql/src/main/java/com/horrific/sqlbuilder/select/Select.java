@@ -14,12 +14,12 @@ public class Select {
 
 	public Select(Context context) {
 		this.context = context;
-		this.context.appendLine("SELECT");
+		this.context.appendLine("SELECT ");
 		columns = new LinkedList<>();
 	}
 
 	public From from() {
-		this.context.appendLine(StringUtils.join(columns, ",\n"));
+		this.context.appendLine(StringUtils.join(columns, ","));
 		return new From(context);
 	}
 

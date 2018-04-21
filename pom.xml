@@ -47,7 +47,7 @@
 		<slf4j-api.version>1.7.12</slf4j-api.version>
 		<logback-classic.version>1.1.7</logback-classic.version>
 		<logback-access.version>1.1.7</logback-access.version>
-		<slf4j-log4j12.version>1.4.2</slf4j-log4j12.version>
+		<slf4j-log4j12.version>1.7.9</slf4j-log4j12.version>
 		<log4j-over-slf4j.version>1.7.6</log4j-over-slf4j.version>
 		<log4j.version>2.6.2</log4j.version>
 		<jetty.version>9.2.22.v20170606</jetty.version>
@@ -187,11 +187,11 @@
 				<version>${org.springframework.version}</version>
 			</dependency>
 
-			<dependency>
+			<!--<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>druid</artifactId>
 				<version>${druid.version}</version>
-			</dependency>
+			</dependency>-->
 			<!--spring end -->
 
 			<dependency>

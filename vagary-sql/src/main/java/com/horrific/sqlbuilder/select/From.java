@@ -20,7 +20,7 @@ public class From implements TerminalExpression {
 
 	From(Context context) {
 		this.context = context;
-		this.context.appendLine("FROM");
+		this.context.appendLine(" FROM ");
 	}
 
 	public From table(String table) {
@@ -104,8 +104,8 @@ public class From implements TerminalExpression {
 	private void terminate() {
 		if (!terminated) {
 			final String newLine = System.getProperty("line.separator");
-			this.context.appendLine(StringUtils.join(tables, "," + newLine));
-			this.context.appendLine(newLine);
+			this.context.appendLine(StringUtils.join(tables, ","));
+			//this.context.appendLine(newLine);
 			terminated = true;
 		}
 	}

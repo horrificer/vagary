@@ -1,5 +1,8 @@
 package com.horrific.query;
 
+import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.pool.ElasticSearchDruidDataSourceFactory;
+import com.google.common.collect.Maps;
 import com.horrific.Param;
 import com.horrific.buildsql.MysqlBuilder;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +14,7 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * @author wanghong12
@@ -29,6 +33,16 @@ public abstract class AbstractQuery {
 
     abstract <T> T query(Param param);
 
+    /*static {
+        Properties properties = new Properties();
+        properties.put("url", "jdbc:elasticsearch://192.168.200.122:20300");
+        try {
+            dataSource = (DruidDataSource) ElasticSearchDruidDataSourceFactory.createDataSource(properties);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
+
     /**
      * 查询操作
      *
@@ -41,11 +55,11 @@ public abstract class AbstractQuery {
 
         log.info("sql:{}", sql);
 
-        JdbcTemplate template = new JdbcTemplate(dataSource);
+        NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(dataSource);
 
         //todo validate sql
 
-        return template.queryForList(sql);
+        return template.queryForList(sql, Maps.newHashMap());
     }
 
     /**

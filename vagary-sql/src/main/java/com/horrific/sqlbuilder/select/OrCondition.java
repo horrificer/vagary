@@ -11,7 +11,7 @@ class OrCondition extends Condition {
 
 	@Override
 	protected String getPrefix() {
-		return "OR";
+		return " OR";
 	}
 
 }

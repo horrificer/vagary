@@ -105,7 +105,7 @@ public class Where extends Condition implements TerminalExpression {
 
 	@Override
 	protected String getPrefix() {
-		return "WHERE";
+		return " WHERE";
 	}
 
 	@Override

@@ -11,7 +11,7 @@ class AndCondition extends Condition {
 
 	@Override
 	protected String getPrefix() {
-		return "AND";
+		return " AND";
 	}
 
 }

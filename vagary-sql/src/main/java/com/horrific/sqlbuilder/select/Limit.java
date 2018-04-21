@@ -46,11 +46,11 @@ class HSQLDBLimiter implements Limiter {
 	@Override
 	public Context limit(Context context, Integer start, Integer size) {
 		if (size != null) {
-			context.appendLine("LIMIT " + size);
+			context.appendLine(" LIMIT " + size);
 			context.addParameters(size);
 		}
 		if (start != null) {
-			context.appendLine("OFFSET " + start);
+			context.appendLine(" OFFSET " + start);
 			context.addParameters(start);
 		}
 
